@@ -1,3 +1,9 @@
+rtw8852be-dkms (1.0.5) jammy; urgency=medium
+
+  * Candidate fixes - avoid mask == 0
+
+ -- Greg Whiteley <greg.whiteley@gmail.com>  Mon, 19 Sep 2022 21:03:49 +1000
+
 rtw8852be-dkms (1.0.4) jammy; urgency=medium
 
   * Candidate fixes - bitmap size

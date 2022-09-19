@@ -158,6 +158,9 @@ void halbb_set_reg(struct bb_info *bb, u32 addr, u32 mask, u32 val)
 	u32 ori_val = 0;
 	u32 shift;
 
+	if (mask == 0 && addr == 0)
+		return;
+
 	if (mask != MASKDWORD) {
 		ori_val = halbb_get_32(bb, addr);
 		shift = halbb_cal_bit_shift(mask);
@@ -171,6 +174,9 @@ void halbb_set_reg_cmn(struct bb_info *bb, u32 addr, u32 mask, u32 val, enum phl
 {
 	u32 ori_val, shift;
 	u32 val_mod = val;
+
+	if (mask == 0 && addr == 0)
+		return;
 
 	#ifdef HALBB_DBCC_SUPPORT
 	if (bb->hal_com->dbcc_en && phy_idx == HW_PHY_1)
@@ -191,6 +197,9 @@ void halbb_set_reg_phy0_1(struct bb_info *bb, u32 addr, u32 mask, u32 val)
 {
 	u32 ori_val = 0, shift = 0;
 	u32 val_mod = val;
+
+	if (mask == 0 && addr == 0)
+		return;
 
 	if (mask != MASKDWORD) {
 		shift = halbb_cal_bit_shift(mask);
@@ -218,6 +227,9 @@ u32 halbb_get_reg(struct bb_info *bb, u32 addr, u32 mask)
 {
 	u32 val_0 = 0;
 
+	if (mask == 0 && addr == 0)
+		return 0;
+
 	val_0 = (halbb_get_cr(bb, addr) & mask) >> halbb_cal_bit_shift(mask);
 
 	return val_0;
@@ -226,6 +238,9 @@ u32 halbb_get_reg(struct bb_info *bb, u32 addr, u32 mask)
 u32 halbb_get_reg_cmn(struct bb_info *bb, u32 addr, u32 mask, enum phl_phy_idx phy_idx)
 {
 	u32 val_0 = 0;
+
+	if (mask == 0 && addr == 0)
+		return 0;
 
 	#ifdef HALBB_DBCC_SUPPORT
 	if (bb->hal_com->dbcc_en && phy_idx == HW_PHY_1)
@@ -241,6 +256,9 @@ u32 halbb_get_reg_phy0_1(struct bb_info *bb, u32 addr, u32 mask, u32 *val_1)
 {
 	u32 val_0 = 0;
 	u32 shift = halbb_cal_bit_shift(mask);
+
+	if (mask == 0 && addr == 0)
+		return 0;
 
 	val_0 = (halbb_get_cr(bb, addr) & mask) >> shift;
 
