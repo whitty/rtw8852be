@@ -1,3 +1,9 @@
+rtw8852be-dkms (1.0.4) jammy; urgency=medium
+
+  * Candidate fixes - bitmap size
+
+ -- Greg Whiteley <greg.whiteley@gmail.com>  Fri, 19 Sep 2022 10:12:24 +1000
+
 rtw8852be-dkms (1.0.0) jammy; urgency=medium
 
   * Restrict applicable kernels up to 5.15
